@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubh Diwali 2026 - Festival of Lights Celebration</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        diwali: {
+                            gold: '#ffd700',
+                            orange: '#ff7700',
+                            red: '#b91c1c',
+                            deepindigo: '#0f172a',
+                            darkbg: '#1e1b4b',
+                            cardbg: '#312e81'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .glow-gold {
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 119, 0, 0.4);
+        }
+        .glow-box {
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+        }
+        .firework-canvas, .rangoli-canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d97706;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f59e0b;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-white">
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-amber-500/20 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo / Brand -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center shadow-lg shadow-amber-500/30 animate-pulse">
+                        <i class="fa-solid fa-fire-flame-curved text-yellow-100 text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="heading-font text-2xl font-bold bg-gradient-to-r from-amber-300 via-orange-400 to-yellow-200 bg-clip-text text-transparent">Diwali 2026</span>
+                        <p class="text-xs text-amber-300/80 tracking-widest uppercase">Festival of Lights</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-3">
+                    <button onclick="switchTab('home')" id="nav-home" class="nav-btn px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-amber-500/20 text-amber-300 border border-amber-500/40">
+                        <i class="fa-solid fa-house mr-2"></i>Home
+                    </button>
+                    <button onclick="switchTab('fireworks')" id="nav-fireworks" class="nav-btn px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-gray-300 hover:text-amber-300 hover:bg-slate-800">
+                        <i class="fa-solid fa-sparkles mr-2"></i>Fireworks Show
+                    </button>
+                    <button onclick="switchTab('rangoli')" id="nav-rangoli" class="nav-btn px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-gray-300 hover:text-amber-300 hover:bg-slate-800">
+                        <i class="fa-solid fa-palette mr-2"></i>Rangoli Studio
+                    </button>
+                    <button onclick="switchTab('cards')" id="nav-cards" class="nav-btn px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-gray-300 hover:text-amber-300 hover:bg-slate-800">
+                        <i class="fa-solid fa-envelope-open-text mr-2"></i>Greeting Cards
+                    </button>
+                    <button onclick="switchTab('mithai')" id="nav-mithai" class="nav-btn px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-gray-300 hover:text-amber-300 hover:bg-slate-800">
+                        <i class="fa-solid fa-cookie-bite mr-2"></i>Mithai Guide
+                    </button>
+                </nav>
+
+                <!-- Audio Toggle & Mobile Menu Button -->
+                <div class="flex items-center space-x-3">
+                    <button onclick="toggleAudio()" id="audio-toggle-btn" title="Toggle Festive Sound FX" class="p-3 rounded-xl bg-slate-800 text-amber-400 hover:bg-slate-700 border border-amber-500/30 transition shadow-md">
+                        <i id="audio-icon" class="fa-solid fa-volume-xmark"></i>
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-3 rounded-xl bg-slate-800 text-amber-400 hover:bg-slate-700 border border-amber-500/30">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 bg-slate-900 border-b border-amber-500/20">
+            <button onclick="switchTab('home'); toggleMobileMenu();" class="block w-full text-left px-4 py-3 rounded-lg text-amber-300 bg-slate-800 font-medium">
+                <i class="fa-solid fa-house mr-3"></i>Home
+            </button>
+            <button onclick="switchTab('fireworks'); toggleMobileMenu();" class="block w-full text-left px-4 py-3 rounded-lg text-gray-300 hover:bg-slate-800 font-medium">
+                <i class="fa-solid fa-sparkles mr-3"></i>Fireworks Show
+            </button>
+            <button onclick="switchTab('rangoli'); toggleMobileMenu();" class="block w-full text-left px-4 py-3 rounded-lg text-gray-300 hover:bg-slate-800 font-medium">
+                <i class="fa-solid fa-palette mr-3"></i>Rangoli Studio
+            </button>
+            <button onclick="switchTab('cards'); toggleMobileMenu();" class="block w-full text-left px-4 py-3 rounded-lg text-gray-300 hover:bg-slate-800 font-medium">
+                <i class="fa-solid fa-envelope-open-text mr-3"></i>Greeting Cards
+            </button>
+            <button onclick="switchTab('mithai'); toggleMobileMenu();" class="block w-full text-left px-4 py-3 rounded-lg text-gray-300 hover:bg-slate-800 font-medium">
+                <i class="fa-solid fa-cookie-bite mr-3"></i>Mithai Guide
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow">
+
+        <!-- ================= TAB 1: HOME ================= -->
+        <section id="tab-home" class="tab-content">
+            <!-- Hero Banner -->
+            <div class="relative overflow-hidden bg-gradient-to-b from-slate-900 via-indigo-950 to-slate-950 py-20 lg:py-28 px-4 border-b border-amber-500/10">
+                <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffd700_1px,transparent_1px)] [background-size:24px_24px]"></div>
+                <div class="max-w-5xl mx-auto text-center relative z-10">
+                    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-sm mb-6 animate-bounce">
+                        <i class="fa-solid fa-star text-xs"></i>
+                        <span>November 8, 2026 — Celebrate with Joy & Light</span>
+                        <i class="fa-solid fa-star text-xs"></i>
+                    </div>
+                    <h1 class="heading-font text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6">
+                        Happy <span class="bg-gradient-to-r from-amber-300 via-orange-400 to-yellow-200 bg-clip-text text-transparent glow-gold">Diwali 2026</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+                        May the festival of lights illuminate your life with happiness, prosperity, and peace. Explore our interactive celebration experience below!
+                    </p>
+
+                    <!-- Live Countdown Timer -->
+                    <div class="bg-slate-900/80 border border-amber-500/30 backdrop-blur-md rounded-2xl p-6 max-w-3xl mx-auto shadow-2xl glow-box mb-10">
+                        <h3 class="text-amber-400 font-semibold mb-4 tracking-wider text-sm uppercase">
+                            <i class="fa-solid fa-clock mr-2"></i>Countdown to Diwali 2026 (Nov 8, 2026)
+                        </h3>
+                        <div id="countdown" class="grid grid-cols-4 gap-4 text-center">
+                            <div class="bg-slate-800/80 p-3 rounded-xl border border-amber-500/20">
+                                <span id="days" class="text-3xl md:text-4xl font-bold text-amber-300 block">00</span>
+                                <span class="text-xs text-gray-400 uppercase">Days</span>
+                            </div>
+                            <div class="bg-slate-800/80 p-3 rounded-xl border border-amber-500/20">
+                                <span id="hours" class="text-3xl md:text-4xl font-bold text-amber-300 block">00</span>
+                                <span class="text-xs text-gray-400 uppercase">Hours</span>
+                            </div>
+                            <div class="bg-slate-800/80 p-3 rounded-xl border border-amber-500/20">
+                                <span id="minutes" class="text-3xl md:text-4xl font-bold text-amber-300 block">00</span>
+                                <span class="text-xs text-gray-400 uppercase">Minutes</span>
+                            </div>
+                            <div class="bg-slate-800/80 p-3 rounded-xl border border-amber-500/20">
+                                <span id="seconds" class="text-3xl md:text-4xl font-bold text-amber-300 block">00</span>
+                                <span class="text-xs text-gray-400 uppercase">Seconds</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Action Buttons -->
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button onclick="switchTab('fireworks')" class="px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-slate-950 font-bold hover:brightness-110 transition shadow-lg shadow-orange-500/20 flex items-center space-x-3">
+                            <i class="fa-solid fa-sparkles"></i>
+                            <span>Launch Fireworks</span>
+                        </button>
+                        <button onclick="switchTab('rangoli')" class="px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-500/30 font-bold transition flex items-center space-x-3">
+                            <i class="fa-solid fa-palette"></i>
+                            <span>Create Rangoli</span>
+                        </button>
+                        <button onclick="switchTab('cards')" class="px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-500/30 font-bold transition flex items-center space-x-3">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                            <span>Send Greeting Card</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature Highlights Grid -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="text-center mb-16">
+                    <h2 class="heading-font text-3xl md:text-4xl font-bold text-white mb-4">Celebration Features</h2>
+                    <p class="text-gray-400 max-w-xl mx-auto">Immerse yourself in traditional and modern festivities right from your screen.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Feature 1 -->
+                    <div onclick="switchTab('fireworks')" class="bg-slate-900 border border-slate-800 hover:border-amber-500/40 rounded-2xl p-6 transition duration-300 hover:-translate-y-2 cursor-pointer group shadow-xl">
+                        <div class="w-14 h-14 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-amber-500 group-hover:text-slate-950 transition">
+                            <i class="fa-solid fa-sparkles"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Interactive Fireworks</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Launch dazzling multi-color fireworks into the night sky with particle physics and sound.</p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div onclick="switchTab('rangoli')" class="bg-slate-900 border border-slate-800 hover:border-amber-500/40 rounded-2xl p-6 transition duration-300 hover:-translate-y-2 cursor-pointer group shadow-xl">
+                        <div class="w-14 h-14 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-amber-500 group-hover:text-slate-950 transition">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Symmetrical Rangoli</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Design breathtaking Mandalas and Rangolis with mirror symmetry axes and vibrant festival colors.</p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div onclick="switchTab('cards')" class="bg-slate-900 border border-slate-800 hover:border-amber-500/40 rounded-2xl p-6 transition duration-300 hover:-translate-y-2 cursor-pointer group shadow-xl">
+                        <div class="w-14 h-14 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-amber-500 group-hover:text-slate-950 transition">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Greeting Card Creator</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Customize and share personalized Diwali greetings with friends and family instantly.</p>
+                    </div>
+                    <!-- Feature 4 -->
+                    <div onclick="switchTab('mithai')" class="bg-slate-900 border border-slate-800 hover:border-amber-500/40 rounded-2xl p-6 transition duration-300 hover:-translate-y-2 cursor-pointer group shadow-xl">
+                        <div class="w-14 h-14 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-amber-500 group-hover:text-slate-950 transition">
+                            <i class="fa-solid fa-cookie-bite"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Mithai & Sweets</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Explore traditional Indian festive sweets like Ladoo, Jalebi, Kaju Katli, and Gulab Jamun.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 2: FIREWORKS SHOW ================= -->
+        <section id="tab-fireworks" class="tab-content hidden min-h-[calc(100vh-5rem)] flex flex-col relative bg-slate-950">
+            <!-- Top Controls Overlay -->
+            <div class="absolute top-4 left-4 right-4 z-20 flex flex-wrap items-center justify-between gap-3 bg-slate-900/80 backdrop-blur-md px-4 py-3 rounded-xl border border-amber-500/30">
+                <div class="flex items-center space-x-3">
+                    <span class="w-3 h-3 rounded-full bg-amber-400 animate-ping"></span>
+                    <h2 class="font-bold text-white text-lg">Firework Show Simulator</h2>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button onclick="triggerAutoBurst()" class="px-4 py-2 bg-amber-500 text-slate-950 font-bold rounded-lg hover:bg-amber-400 transition text-sm shadow">
+                        <i class="fa-solid fa-rocket mr-2"></i>Launch Big Burst
+                    </button>
+                    <button onclick="clearFireworks()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-gray-300 rounded-lg text-sm border border-slate-700">
+                        Clear Sky
+                    </button>
+                </div>
+            </div>
+
+            <!-- Canvas Container -->
+            <div class="flex-grow relative cursor-crosshair">
+                <canvas id="fireworksCanvas" class="firework-canvas"></canvas>
+                <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 pointer-events-none bg-slate-900/80 backdrop-blur-md px-6 py-2 rounded-full border border-amber-500/20 text-xs text-amber-300/80 text-center shadow-lg">
+                    <i class="fa-solid fa-hand-pointer mr-2"></i>Click or tap anywhere on the screen to launch custom firework bursts!
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: RANGOLI STUDIO ================= -->
+        <section id="tab-rangoli" class="tab-content hidden py-10 px-4">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-8">
+                    <h2 class="heading-font text-3xl md:text-4xl font-bold text-white mb-2">Symmetrical Rangoli Studio</h2>
+                    <p class="text-gray-400 text-sm">Create stunning traditional mandala designs with mirror symmetry and brilliant color palettes.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+                    <!-- Controls Sidebar -->
+                    <div class="lg:col-span-1 bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-6">
+                        <!-- Color Palette -->
+                        <div>
+                            <label class="block text-sm font-semibold text-amber-400 mb-3">Rangoli Colors</label>
+                            <div id="colorPalette" class="grid grid-cols-4 gap-3">
+                                <button onclick="setRangoliColor('#ffd700')" class="color-btn w-full h-10 rounded-lg bg-[#ffd700] ring-2 ring-white scale-105 shadow" data-color="#ffd700"></button>
+                                <button onclick="setRangoliColor('#ff7700')" class="color-btn w-full h-10 rounded-lg bg-[#ff7700] shadow" data-color="#ff7700"></button>
+                                <button onclick="setRangoliColor('#ef4444')" class="color-btn w-full h-10 rounded-lg bg-[#ef4444] shadow" data-color="#ef4444"></button>
+                                <button onclick="setRangoliColor('#ec4899')" class="color-btn w-full h-10 rounded-lg bg-[#ec4899] shadow" data-color="#ec4899"></button>
+                                <button onclick="setRangoliColor('#8b5cf6')" class="color-btn w-full h-10 rounded-lg bg-[#8b5cf6] shadow" data-color="#8b5cf6"></button>
+                                <button onclick="setRangoliColor('#3b82f6')" class="color-btn w-full h-10 rounded-lg bg-[#3b82f6] shadow" data-color="#3b82f6"></button>
+                                <button onclick="setRangoliColor('#10b981')" class="color-btn w-full h-10 rounded-lg bg-[#10b981] shadow" data-color="#10b981"></button>
+                                <button onclick="setRangoliColor('#ffffff')" class="color-btn w-full h-10 rounded-lg bg-[#ffffff] shadow" data-color="#ffffff"></button>
+                            </div>
+                        </div>
+
+                        <!-- Symmetry Axes -->
+                        <div>
+                            <label class="block text-sm font-semibold text-amber-400 mb-2">Symmetry Axes: <span id="symmetryValue" class="text-white font-bold">8</span></label>
+                            <input type="range" id="symmetryRange" min="2" max="16" step="2" value="8" oninput="updateSymmetry(this.value)" class="w-full accent-amber-500 bg-slate-800 rounded-lg cursor-pointer">
+                        </div>
+
+                        <!-- Brush Size -->
+                        <div>
+                            <label class="block text-sm font-semibold text-amber-400 mb-2">Brush Size: <span id="brushSizeValue" class="text-white font-bold">6</span>px</label>
+                            <input type="range" id="brushSizeRange" min="2" max="30" value="6" oninput="updateBrushSize(this.value)" class="w-full accent-amber-500 bg-slate-800 rounded-lg cursor-pointer">
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="space-y-3 pt-2">
+                            <button onclick="clearRangoliCanvas()" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-gray-200 font-semibold rounded-xl border border-slate-700 transition">
+                                <i class="fa-solid fa-rotate-right mr-2"></i>Clear Canvas
+                            </button>
+                            <button onclick="downloadRangoli()" class="w-full py-3 bg-gradient-to-r from-amber-500 to-orange-600 text-slate-950 font-bold rounded-xl hover:brightness-110 transition shadow-lg shadow-amber-500/20">
+                                <i class="fa-solid fa-download mr-2"></i>Save Masterpiece
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Canvas Area -->
+                    <div class="lg:col-span-3 bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center justify-center shadow-2xl relative min-h-[500px] lg:min-h-[600px]">
+                        <canvas id="rangoliCanvas" class="rangoli-canvas bg-slate-950 rounded-xl shadow-inner cursor-crosshair"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 4: GREETING CARDS ================= -->
+        <section id="tab-cards" class="tab-content hidden py-12 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-10">
+                    <h2 class="heading-font text-3xl md:text-4xl font-bold text-white mb-2">Diwali Greeting Card Maker</h2>
+                    <p class="text-gray-400 text-sm">Customize your personal greeting message and card theme to send warmth and joy.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <!-- Form Controls -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-xl space-y-5">
+                        <div>
+                            <label class="block text-sm font-semibold text-amber-400 mb-2">Recipient Name</label>
+                            <input type="text" id="cardTo" value="Dear Friends & Family" oninput="updateCardPreview()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-amber-400 mb-2">Greeting Message</label>
+                            <textarea id="cardMsg" rows="4" oninput="updateCardPreview()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500">May the divine light of Diwali bring good health, endless prosperity, and joyful celebrations into your home.</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-amber-400 mb-2">Sender Name</label>
+                            <input type="text" id="cardFrom" value="The Kirulkar Family" oninput="updateCardPreview()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-amber-400 mb-2">Card Theme</label>
+                            <div class="grid grid-cols-3 gap-3">
+                                <button onclick="setCardTheme('indigo')" class="theme-btn py-3 rounded-xl bg-indigo-950 border-2 border-amber-500 text-amber-300 font-semibold text-sm">Royal Indigo</button>
+                                <button onclick="setCardTheme('maroon')" class="theme-btn py-3 rounded-xl bg-red-950 border-2 border-slate-700 text-amber-300 font-semibold text-sm">Festive Maroon</button>
+                                <button onclick="setCardTheme('dark')" class="theme-btn py-3 rounded-xl bg-slate-950 border-2 border-slate-700 text-amber-300 font-semibold text-sm">Midnight Gold</button>
+                            </div>
+                        </div>
+                        <button onclick="copyGreetingCard()" class="w-full py-4 bg-gradient-to-r from-amber-500 to-orange-600 text-slate-950 font-bold rounded-xl hover:brightness-110 transition shadow-lg shadow-amber-500/20">
+                            <i class="fa-solid fa-copy mr-2"></i>Copy Greeting Text
+                        </button>
+                    </div>
+
+                    <!-- Live Card Preview -->
+                    <div>
+                        <div id="cardPreviewContainer" class="bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-950 border-2 border-amber-500/40 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden text-center glow-box">
+                            <div class="absolute top-0 right-0 p-6 opacity-10 text-amber-400 text-9xl">
+                                <i class="fa-solid fa-fire-flame-curved"></i>
+                            </div>
+                            <div class="w-16 h-16 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center mx-auto mb-6 text-2xl shadow-md">
+                                <i class="fa-solid fa-diya"></i>
+                            </div>
+                            <span class="text-xs uppercase tracking-widest text-amber-400 font-semibold block mb-2">Shubh Deepavali 2026</span>
+                            <h3 id="previewTo" class="heading-font text-2xl md:text-3xl font-bold text-white mb-6">Dear Friends & Family</h3>
+                            <p id="previewMsg" class="text-gray-300 text-base md:text-lg leading-relaxed mb-8 italic">
+                                "May the divine light of Diwali bring good health, endless prosperity, and joyful celebrations into your home."
+                            </p>
+                            <div class="pt-6 border-t border-amber-500/20">
+                                <span class="text-xs text-gray-400 block uppercase tracking-wider mb-1">Warmest Wishes,</span>
+                                <span id="previewFrom" class="heading-font text-lg font-bold text-amber-300">The Kirulkar Family</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 5: MITHAI GUIDE ================= -->
+        <section id="tab-mithai" class="tab-content hidden py-12 px-4">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="heading-font text-3xl md:text-4xl font-bold text-white mb-2">Traditional Diwali Mithai Guide</h2>
+                    <p class="text-gray-400 text-sm">Discover the iconic sweets that make Diwali celebrations sweet and memorable.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Mithai 1 -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-amber-500/40 transition duration-300">
+                        <div class="h-48 bg-gradient-to-tr from-amber-600 to-yellow-500 flex items-center justify-center text-slate-950 text-6xl">
+                            <i class="fa-solid fa-cookie"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Motichoor Ladoo</h3>
+                            <p class="text-gray-400 text-sm mb-4">Delicate tiny gram flour pearls fried to perfection and rolled with cardamom and dry fruits.</p>
+                            <span class="inline-block px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 text-xs font-semibold">Festive Essential</span>
+                        </div>
+                    </div>
+                    <!-- Mithai 2 -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-amber-500/40 transition duration-300">
+                        <div class="h-48 bg-gradient-to-tr from-orange-500 to-amber-700 flex items-center justify-center text-slate-950 text-6xl">
+                            <i class="fa-solid fa-circle-notch"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Crispy Jalebi</h3>
+                            <p class="text-gray-400 text-sm mb-4">Spiral fermented batter fried crisp and soaked warm in rich saffron-infused sugar syrup.</p>
+                            <span class="inline-block px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 text-xs font-semibold">Best Served Warm</span>
+                        </div>
+                    </div>
+                    <!-- Mithai 3 -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-amber-500/40 transition duration-300">
+                        <div class="h-48 bg-gradient-to-tr from-slate-200 to-amber-100 flex items-center justify-center text-slate-800 text-6xl">
+                            <i class="fa-solid fa-diamond"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Kaju Katli</h3>
+                            <p class="text-gray-400 text-sm mb-4">Smooth diamond-shaped fudge crafted from premium cashews, milk, and edible silver foil.</p>
+                            <span class="inline-block px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 text-xs font-semibold">Royal Gift</span>
+                        </div>
+                    </div>
+                    <!-- Mithai 4 -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-amber-500/40 transition duration-300">
+                        <div class="h-48 bg-gradient-to-tr from-amber-800 to-amber-950 flex items-center justify-center text-amber-300 text-6xl">
+                            <i class="fa-solid fa-bowl-food"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Gulab Jamun</h3>
+                            <p class="text-gray-400 text-sm mb-4">Soft khoya milk dumplings fried golden and soaked in rosewater and cardamom syrup.</p>
+                            <span class="inline-block px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 text-xs font-semibold">Crowd Favourite</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-amber-500/20 py-8 px-4 text-center text-gray-400 text-sm">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <p>© 2026 Diwali Festival Celebration. Wishing you peace, light, and prosperity.</p>
+            <div class="flex space-x-6 text-amber-400 text-lg">
+                <i class="fa-solid fa-diya"></i>
+                <i class="fa-solid fa-sparkles"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 border border-amber-500/50 text-white px-6 py-3 rounded-xl shadow-2xl flex items-center space-x-3">
+        <i class="fa-solid fa-circle-check text-amber-400 text-lg"></i>
+        <span id="toast-msg">Action completed successfully!</span>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // --- Navigation Tab Switcher ---
+        function switchTab(tabId) {
+            const tabs = ['home', 'fireworks', 'rangoli', 'cards', 'mithai'];
+            tabs.forEach(t => {
+                const el = document.getElementById(`tab-${t}`);
+                if (el) el.classList.add('hidden');
+                const btn = document.getElementById(`nav-${t}`);
+                if (btn) {
+                    btn.className = "nav-btn px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-gray-300 hover:text-amber-300 hover:bg-slate-800";
+                }
+            });
+
+            const activeEl = document.getElementById(`tab-${tabId}`);
+            if (activeEl) activeEl.classList.remove('hidden');
+
+            const activeBtn = document.getElementById(`nav-${tabId}`);
+            if (activeBtn) {
+                activeBtn.className = "nav-btn px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-amber-500/20 text-amber-300 border border-amber-500/40";
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Resize canvases if switching to them
+            if (tabId === 'fireworks') {
+                resizeFireworksCanvas();
+            } else if (tabId === 'rangoli') {
+                resizeRangoliCanvas();
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) menu.classList.toggle('hidden');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const msgEl = document.getElementById('toast-msg');
+            msgEl.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // --- Audio Synthesizer (Web Audio API) ---
+        let audioEnabled = false;
+        let audioCtx = null;
+
+        function toggleAudio() {
+            audioEnabled = !audioEnabled;
+            const icon = document.getElementById('audio-icon');
+            if (audioEnabled) {
+                icon.className = "fa-solid fa-volume-high";
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                playChime();
+                showToast("Festive sound effects enabled!");
+            } else {
+                icon.className = "fa-solid fa-volume-xmark";
+                showToast("Sound effects muted.");
+            }
+        }
+
+        function playSound(type) {
+            if (!audioEnabled || !audioCtx) return;
+            try {
+                if (type === 'firework') {
+                    // Explosion sound (white noise burst + low thump)
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(120, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 0.4);
+                    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.4);
+                } else if (type === 'chime') {
+                    playChime();
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        function playChime() {
+            if (!audioEnabled || !audioCtx) return;
+            const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+            notes.forEach((freq, idx) => {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.frequency.value = freq;
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime + idx * 0.1);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + idx * 0.1 + 0.5);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start(audioCtx.currentTime + idx * 0.1);
+                osc.stop(audioCtx.currentTime + idx * 0.1 + 0.5);
+            });
+        }
+
+        // --- Live Countdown Timer ---
+        const diwaliDate = new Date('November 8, 2026 00:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = diwaliDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // --- Firework Simulator (Canvas) ---
+        const fwCanvas = document.getElementById('fireworksCanvas');
+        const fwCtx = fwCanvas.getContext('2d');
+        let fwParticles = [];
+        let fwFireworks = [];
+
+        function resizeFireworksCanvas() {
+            fwCanvas.width = fwCanvas.parentElement.clientWidth;
+            fwCanvas.height = fwCanvas.parentElement.clientHeight || 550;
+        }
+        window.addEventListener('resize', () => {
+            if (fwCanvas) resizeFireworksCanvas();
+        });
+
+        class FireworkParticle {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 6 + 2;
+                this.vx = Math.cos(angle) * speed;
+                this.vy = Math.sin(angle) * speed;
+                this.alpha = 1;
+                this.friction = 0.95;
+                this.gravity = 0.08;
+                this.decay = Math.random() * 0.015 + 0.01;
+            }
+            update() {
+                this.vx *= this.friction;
+                this.vy *= this.friction;
+                this.vy += this.gravity;
+                this.x += this.vx;
+                this.y += this.vy;
+                this.alpha -= this.decay;
+            }
+            draw() {
+                fwCtx.save();
+                fwCtx.globalAlpha = Math.max(0, this.alpha);
+                fwCtx.fillStyle = this.color;
+                fwCtx.beginPath();
+                fwCtx.arc(this.x, this.y, 2.5, 0, Math.PI * 2);
+                fwCtx.fill();
+                fwCtx.restore();
+            }
+        }
+
+        class FireworkRocket {
+            constructor(startX, startY, targetX, targetY, color) {
+                this.x = startX;
+                this.y = startY;
+                this.targetX = targetX;
+                this.targetY = targetY;
+                this.color = color;
+                const angle = Math.atan2(targetY - startY, targetX - startX);
+                const speed = 12;
+                this.vx = Math.cos(angle) * speed;
+                this.vy = Math.sin(angle) * speed;
+                this.distanceToTarget = Math.hypot(targetX - startX, targetY - startY);
+                this.distanceTraveled = 0;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.distanceTraveled = Math.hypot(this.x - (this.targetX - this.vx), this.y - (this.targetY - this.vy));
+            }
+            draw() {
+                fwCtx.save();
+                fwCtx.fillStyle = this.color;
+                fwCtx.beginPath();
+                fwCtx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                fwCtx.fill();
+                fwCtx.restore();
+            }
+        }
+
+        function createBurst(x, y, customColor) {
+            const colors = ['#ffd700', '#ff7700', '#ef4444', '#ec4899', '#3b82f6', '#10b981', '#8b5cf6'];
+            const color = customColor || colors[Math.floor(Math.random() * colors.length)];
+            const particleCount = 80;
+            for (let i = 0; i < particleCount; i++) {
+                fwParticles.push(new FireworkParticle(x, y, color));
+            }
+            playSound('firework');
+        }
+
+        function triggerAutoBurst() {
+            const x = Math.random() * (fwCanvas.width - 200) + 100;
+            const y = Math.random() * (fwCanvas.height / 2) + 50;
+            createBurst(x, y);
+        }
+
+        function clearFireworks() {
+            fwParticles = [];
+            fwFireworks = [];
+        }
+
+        fwCanvas.addEventListener('click', (e) => {
+            const rect = fwCanvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            createBurst(x, y);
+        });
+
+        // Touch support for fireworks
+        fwCanvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const rect = fwCanvas.getBoundingClientRect();
+            const touch = e.touches[0];
+            const x = touch.clientX - rect.left;
+            const y = touch.clientY - rect.top;
+            createBurst(x, y);
+        }, { passive: false });
+
+        // Auto launcher interval
+        setInterval(() => {
+            const activeTab = document.getElementById('tab-fireworks');
+            if (activeTab && !activeTab.classList.contains('hidden') && Math.random() < 0.4) {
+                triggerAutoBurst();
+            }
+        }, 1200);
+
+        function animateFireworks() {
+            requestAnimationFrame(animateFireworks);
+            fwCtx.fillStyle = 'rgba(11, 15, 25, 0.2)';
+            fwCtx.fillRect(0, 0, fwCanvas.width, fwCanvas.height);
+
+            // Update & draw rockets
+            for (let i = fwFireworks.length - 1; i >= 0; i--) {
+                fwFireworks[i].update();
+                fwFireworks[i].draw();
+                if (fwFireworks[i].y <= fwFireworks[i].targetY) {
+                    createBurst(fwFireworks[i].targetX, fwFireworks[i].targetY, fwFireworks[i].color);
+                    fwFireworks.splice(i, 1);
+                }
+            }
+
+            // Update & draw particles
+            for (let i = fwParticles.length - 1; i >= 0; i--) {
+                fwParticles[i].update();
+                fwParticles[i].draw();
+                if (fwParticles[i].alpha <= 0) {
+                    fwParticles.splice(i, 1);
+                }
+            }
+        }
+        setTimeout(() => {
+            resizeFireworksCanvas();
+            animateFireworks();
+        }, 100);
+
+        // --- Symmetrical Rangoli Canvas Studio ---
+        const rCanvas = document.getElementById('rangoliCanvas');
+        const rCtx = rCanvas.getContext('2d');
+        let isDrawing = false;
+        let currentColor = '#ffd700';
+        let currentSymmetry = 8;
+        let currentBrushSize = 6;
+
+        function resizeRangoliCanvas() {
+            const container = rCanvas.parentElement;
+            rCanvas.width = container.clientWidth - 32;
+            rCanvas.height = Math.max(500, container.clientWidth * 0.7);
+            clearRangoliCanvas();
+        }
+
+        function clearRangoliCanvas() {
+            rCtx.fillStyle = '#0b0f19';
+            rCtx.fillRect(0, 0, rCanvas.width, rCanvas.height);
+            // Draw center guide dot
+            rCtx.save();
+            rCtx.strokeStyle = 'rgba(255, 215, 0, 0.2)';
+            rCtx.lineWidth = 1;
+            rCtx.beginPath();
+            rCtx.arc(rCanvas.width / 2, rCanvas.height / 2, 5, 0, Math.PI * 2);
+            rCtx.stroke();
+            rCtx.restore();
+        }
+
+        window.addEventListener('resize', () => {
+            if (rCanvas) {
+                // Keep drawing state or clear if needed
+            }
+        });
+
+        function setRangoliColor(color) {
+            currentColor = color;
+            document.querySelectorAll('.color-btn').forEach(btn => {
+                if (btn.getAttribute('data-color') === color) {
+                    btn.classList.add('ring-2', 'ring-white', 'scale-105');
+                } else {
+                    btn.classList.remove('ring-2', 'ring-white', 'scale-105');
+                }
+            });
+        }
+
+        function updateSymmetry(val) {
+            currentSymmetry = parseInt(val);
+            document.getElementById('symmetryValue').textContent = val;
+        }
+
+        function updateBrushSize(val) {
+            currentBrushSize = parseInt(val);
+            document.getElementById('brushSizeValue').textContent = val;
+        }
+
+        function drawSymmetrical(x, y, prevX, prevY) {
+            const cx = rCanvas.width / 2;
+            const cy = rCanvas.height / 2;
+            const angleStep = (Math.PI * 2) / currentSymmetry;
+
+            rCtx.strokeStyle = currentColor;
+            rCtx.fillStyle = currentColor;
+            rCtx.lineWidth = currentBrushSize;
+            rCtx.lineCap = 'round';
+            rCtx.lineJoin = 'round';
+
+            // Translate to center
+            const relX = x - cx;
+            const relY = y - cy;
+            const prevRelX = prevX - cx;
+            const prevRelY = prevY - cy;
+
+            for (let i = 0; i < currentSymmetry; i++) {
+                const angle = i * angleStep;
+                const cos = Math.cos(angle);
+                const sin = Math.sin(angle);
+
+                // Rotated points
+                const rx1 = cos * relX - sin * relY + cx;
+                const ry1 = sin * relX + cos * relY + cy;
+                const rx2 = cos * prevRelX - sin * prevRelY + cx;
+                const ry2 = sin * prevRelX + cos * prevRelY + cy;
+
+                rCtx.beginPath();
+                rCtx.moveTo(rx2, ry2);
+                rCtx.lineTo(rx1, ry1);
+                rCtx.stroke();
+
+                // Mirrored symmetry per sector
+                const mRx1 = cos * (-relX) - sin * relY + cx;
+                const mRy1 = sin * (-relX) + cos * relY + cy;
+                const mRx2 = cos * (-prevRelX) - sin * prevRelY + cx;
+                const mRy2 = sin * (-prevRelX) + cos * prevRelY + cy;
+
+                rCtx.beginPath();
+                rCtx.moveTo(mRx2, mRy2);
+                rCtx.lineTo(mRx1, mRy1);
+                rCtx.stroke();
+            }
+        }
+
+        let lastX = 0, lastY = 0;
+
+        rCanvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            const rect = rCanvas.getBoundingClientRect();
+            lastX = e.clientX - rect.left;
+            lastY = e.clientY - rect.top;
+        });
+
+        rCanvas.addEventListener('mousemove', (e) => {
+            if (!isDrawing) return;
+            const rect = rCanvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            drawSymmetrical(x, y, lastX, lastY);
+            lastX = x;
+            lastY = y;
+        });
+
+        window.addEventListener('mouseup', () => { isDrawing = false; });
+
+        // Touch support for rangoli
+        rCanvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            isDrawing = true;
+            const rect = rCanvas.getBoundingClientRect();
+            const touch = e.touches[0];
+            lastX = touch.clientX - rect.left;
+            lastY = touch.clientY - rect.top;
+        }, { passive: false });
+
+        rCanvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            if (!isDrawing) return;
+            const rect = rCanvas.getBoundingClientRect();
+            const touch = e.touches[0];
+            const x = touch.clientX - rect.left;
+            const y = touch.clientY - rect.top;
+            drawSymmetrical(x, y, lastX, lastY);
+            lastX = x;
+            lastY = y;
+        }, { passive: false });
+
+        rCanvas.addEventListener('touchend', () => { isDrawing = false; });
+
+        function downloadRangoli() {
+            const link = document.createElement('a');
+            link.download = 'diwali-rangoli-2026.png';
+            link.href = rCanvas.toDataURL();
+            link.click();
+            showToast("Rangoli masterpiece downloaded successfully!");
+        }
+
+        // --- Greeting Card Maker ---
+        function updateCardPreview() {
+            const to = document.getElementById('cardTo').value;
+            const msg = document.getElementById('cardMsg').value;
+            const from = document.getElementById('cardFrom').value;
+
+            document.getElementById('previewTo').textContent = to;
+            document.getElementById('previewMsg').textContent = `"${msg}"`;
+            document.getElementById('previewFrom').textContent = from;
+        }
+
+        function setCardTheme(theme) {
+            const container = document.getElementById('cardPreviewContainer');
+            if (theme === 'indigo') {
+                container.className = "bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-950 border-2 border-amber-500/40 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden text-center glow-box";
+            } else if (theme === 'maroon') {
+                container.className = "bg-gradient-to-br from-red-950 via-slate-900 to-slate-950 border-2 border-amber-500/40 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden text-center glow-box";
+            } else if (theme === 'dark') {
+                container.className = "bg-gradient-to-br from-slate-950 via-slate-900 to-black border-2 border-amber-500/40 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden text-center glow-box";
+            }
+            showToast("Card theme updated!");
+        }
+
+        function copyGreetingCard() {
+            const to = document.getElementById('cardTo').value;
+            const msg = document.getElementById('cardMsg').value;
+            const from = document.getElementById('cardFrom').value;
+            const text = `🪔 Shubh Diwali 2026! 🪔\n\nTo: ${to}\n\n"${msg}"\n\nWarmest Wishes,\n${from}`;
+            
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast("Greeting card text copied to clipboard!");
+            } catch (err) {
+                showToast("Failed to copy text.");
+            }
+            document.body.removeChild(textarea);
+        }
+
+        // Initialize Rangoli Canvas on load
+        setTimeout(() => {
+            resizeRangoliCanvas();
+        }, 200);
+    </script>
+</body>
+</html>
